@@ -16,4 +16,7 @@ func _physics_process(delta):
 	var point = target.global_translation
 	angle += delta * speed
 	global_translation = point + (pos - point).rotated(point.normalized(), delta * speed)
+
 	$Camera.look_at(target.global_translation, Vector3.UP)
+	look_at(Vector3(point.x, pos.y, point.z), Vector3.UP)
+	rotation.y += 90
