@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/bubble.glb-2477fb6e2c0d087e83127697d0f958e9.scn"
+path="res://.import/bubble.glb-26a68a706c6138d2df44958b93e799ab.scn"
 
 [deps]
 
-source_file="res://bubble.glb"
-dest_files=[ "res://.import/bubble.glb-2477fb6e2c0d087e83127697d0f958e9.scn" ]
+source_file="res://assets/bubble.glb"
+dest_files=[ "res://.import/bubble.glb-26a68a706c6138d2df44958b93e799ab.scn" ]
 
 [params]
 
