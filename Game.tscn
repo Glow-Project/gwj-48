@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/Mountain_winter_004.fbx" type="PackedScene" id=1]
 [ext_resource path="res://assets/Mountain_winter_005.fbx" type="PackedScene" id=2]
 [ext_resource path="res://assets/Mountain_winter_003.fbx" type="PackedScene" id=3]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://components/Earth.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -50,9 +52,6 @@ size = Vector2( 20, 20 )
 subdivide_width = 32
 subdivide_depth = 32
 
-[sub_resource type="ViewportTexture" id=9]
-viewport_path = NodePath("Viewport")
-
 [node name="Game" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -74,7 +73,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238394, 0 )
 mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
-transform = Transform( 7, 0, 0, 0, -7, 0, 0, 0, 7, 0, -0.514705, 0 )
+transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 0, -0.514705, 0 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00253, 0 )
@@ -102,11 +101,9 @@ size = Vector2( 600, 400 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70.7846, 86.1491, 0 )
 target_path = NodePath("../../Bubble")
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.997323, 0.0214239, 0.0699161, -0.0170428, 0.997889, -0.0626673, -0.0711111, 0.0613079, 0.995583, 1.05583, 15.8306, 6.59163 )
-current = true
-fov = 98.752
+[node name="Player" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5034, 0, 58.3567 )
+camera_viewport_path = NodePath("../Viewport")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( -0.999988, 0.00479974, 0, -0.00479974, -0.999988, 0, 0, 0, 1, 0, 14.6125, 0.176256 )
-texture = SubResource( 9 )
+[node name="Earth" parent="." instance=ExtResource( 7 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 339.662, 373.723 )

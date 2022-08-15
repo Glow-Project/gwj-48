@@ -1,9 +1,88 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/AstronautHelmet.glb" type="PackedScene" id=1]
+[ext_resource path="res://components/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/breathing.mp3" type="AudioStream" id=3]
+[ext_resource path="res://components/Map.tscn" type="PackedScene" id=4]
+
+[sub_resource type="OpenSimplexNoise" id=5]
+
+[sub_resource type="NoiseTexture" id=6]
+width = 600
+height = 400
+noise = SubResource( 5 )
 
 [sub_resource type="CapsuleMesh" id=1]
 
-[node name="KinematicBody" type="KinematicBody"]
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 1, 2.17283, 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AstronautHelmet/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 6.29291e-09, 0.210441, -0.0719825 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AstronautHelmet/Camera:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6.29291e-09, 0.210441, -0.0719825 ), Vector3( 0.05, 0.17, -0.07 ), Vector3( 0.078, 0.155, -0.086 ), Vector3( -0.059, 0.15, -0.086 ), Vector3( 6.29291e-09, 0.210441, -0.0719825 ) ]
+}
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="AstronautHelmet" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 7.73947e-09, 0.996074, -0.0885292, 8.70795e-08, -0.0885292, -0.996074, 0, 3.3072, 0 )
+
+[node name="Camera" type="Camera" parent="AstronautHelmet"]
+transform = Transform( -0.99991, 7.63903e-09, -0.0134036, 0.00118662, 0.996073, -0.0885213, 0.013351, -0.0885293, -0.995984, 6.29291e-09, 0.210441, -0.0719825 )
+current = true
+fov = 83.2526
+far = 700.0
+
+[node name="Map" type="Sprite3D" parent="AstronautHelmet"]
+unique_name_in_owner = true
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -2.55358e-07, 0.259609, 2.92095 )
+visible = false
+flip_v = true
+transparent = false
+texture = SubResource( 6 )
+
+[node name="Map" parent="AstronautHelmet/Map" instance=ExtResource( 4 )]
+transform = Transform( -5, -7.10543e-15, 1.13687e-13, 7.10543e-15, 5, 3.8743e-07, -5.68434e-14, 3.57628e-07, -3, -7.25828e-09, 0.00737906, 0.0830252 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 2.26884, 0 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1.296, 0, 1, -5.665e-08, 0, 1.85302, 0 )
 mesh = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25844, 0 )
+shape = SubResource( 2 )
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/walk = SubResource( 4 )

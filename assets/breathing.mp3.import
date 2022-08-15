@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/breathing.mp3-06d7eac8dac74867986da8b951fd08bc.mp3str"
+
+[deps]
+
+source_file="res://assets/breathing.mp3"
+dest_files=[ "res://.import/breathing.mp3-06d7eac8dac74867986da8b951fd08bc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
