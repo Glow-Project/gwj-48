@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Mountain_winter_004.fbx" type="PackedScene" id=1]
 [ext_resource path="res://assets/Mountain_winter_005.fbx" type="PackedScene" id=2]
 [ext_resource path="res://assets/Mountain_winter_003.fbx" type="PackedScene" id=3]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
+[ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -49,6 +50,9 @@ size = Vector2( 20, 20 )
 subdivide_width = 32
 subdivide_depth = 32
 
+[sub_resource type="ViewportTexture" id=9]
+viewport_path = NodePath("Viewport")
+
 [node name="Game" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -90,3 +94,19 @@ transform = Transform( -0.96748, 0, -0.252948, 0, 1, 0, 0.252948, 0, -0.96748, 2
 
 [node name="Mountain_winter_007" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.360697, 0, -0.932683, 0, 1, 0, 0.932683, 0, 0.360697, 61.9425, -3.2366, -19.6339 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 600, 400 )
+
+[node name="Satellite" parent="Viewport" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70.7846, 86.1491, 0 )
+target_path = NodePath("../../Bubble")
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.997323, 0.0214239, 0.0699161, -0.0170428, 0.997889, -0.0626673, -0.0711111, 0.0613079, 0.995583, 1.05583, 15.8306, 6.59163 )
+current = true
+fov = 98.752
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( -0.999988, 0.00479974, 0, -0.00479974, -0.999988, 0, 0, 0, 1, 0, 14.6125, 0.176256 )
+texture = SubResource( 9 )
