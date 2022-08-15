@@ -59,7 +59,7 @@ transform = Transform( -1, 0, -8.74228e-08, 7.73947e-09, 0.996074, -0.0885292, 8
 transform = Transform( -0.99991, 7.63903e-09, -0.0134036, 0.00118662, 0.996073, -0.0885213, 0.013351, -0.0885293, -0.995984, 6.29291e-09, 0.210441, -0.0719825 )
 current = true
 fov = 83.2526
-far = 300.0
+far = 700.0
 
 [node name="Map" type="Sprite3D" parent="AstronautHelmet"]
 unique_name_in_owner = true
