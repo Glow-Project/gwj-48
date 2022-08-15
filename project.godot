@@ -24,7 +24,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/ppm-ui/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [global]
 
