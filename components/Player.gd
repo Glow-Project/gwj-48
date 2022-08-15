@@ -16,7 +16,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	map.texture = camera_viewport.get_texture()
 	while true:
-		$AmbiencePlayer.play()
+		$AmbienceAudioPlayer.play()
 		yield(get_tree().create_timer(10), "timeout")
 
 func _process(delta: float):
@@ -53,6 +53,7 @@ func move_body(delta: float):
 
 	$AnimationPlayer.play("RESET" if input_dir == Vector2.ZERO else "walk")
 
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 func _input(event):

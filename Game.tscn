@@ -106,4 +106,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5034, 0, 58.3567 )
 camera_viewport_path = NodePath("../Viewport")
 
 [node name="Earth" parent="." instance=ExtResource( 7 )]
-transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 339.662, 373.723 )
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 397.747, 373.723 )

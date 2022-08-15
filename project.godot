@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 Global="*res://singletons/Global.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/ppm-ui/plugin.cfg" )
