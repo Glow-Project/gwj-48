@@ -9,7 +9,11 @@ var angle: float = 0.0
 onready var target: Spatial = get_node(target_path)
 
 func _ready():
+	Global.satellite = self
 	center_radius = global_translation.distance_to(target.global_translation)
+
+func _exit_tree():
+	Global.satellite = null
 
 func _physics_process(delta):
 	var pos = global_translation

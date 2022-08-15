@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Map.glb" type="PackedScene" id=1]
+[ext_resource path="res://components/Map.gd" type="Script" id=2]
+
+[node name="Map" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="Cylinder" parent="." index="1"]
+transform = Transform( 0.00191284, -0.0242092, 0, 0.00122702, 0.0377404, 0, 0, 0, 0.00227257, 0.40387, 0.485924, -0.0100964 )
