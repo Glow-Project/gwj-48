@@ -32,6 +32,8 @@ func _process(delta: float):
 		if map.visible:
 			yield(tw, "finished")
 		map.visible = not map.visible
+	elif Input.is_action_pressed("quit"):
+		get_tree().quit()
 
 	move_body(delta)
 
