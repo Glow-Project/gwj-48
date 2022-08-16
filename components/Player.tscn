@@ -122,6 +122,7 @@ shape = SubResource( 2 )
 
 [node name="AmbienceAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "Player"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )

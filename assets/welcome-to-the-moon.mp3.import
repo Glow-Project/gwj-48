@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/welcome-to-the-moon.mp3-7cde3e29ab4f852a323903ddd6c0a3d0.mp3str"
+
+[deps]
+
+source_file="res://assets/welcome-to-the-moon.mp3"
+dest_files=[ "res://.import/welcome-to-the-moon.mp3-7cde3e29ab4f852a323903ddd6c0a3d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
