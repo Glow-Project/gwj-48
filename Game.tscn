@@ -1,13 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/Mountain_winter_004.fbx" type="PackedScene" id=1]
-[ext_resource path="res://assets/Mountain_winter_005.fbx" type="PackedScene" id=2]
-[ext_resource path="res://assets/Mountain_winter_003.fbx" type="PackedScene" id=3]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/Earth.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/moon_heightmap_2.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://assets/terrain2.obj" type="ArrayMesh" id=8]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -53,68 +50,147 @@ size = Vector2( 20, 20 )
 subdivide_width = 32
 subdivide_depth = 32
 
+[sub_resource type="OpenSimplexNoise" id=15]
+persistence = 0.0
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=12]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource( 15 )
+
+[sub_resource type="VisualShaderNodeTexture" id=13]
+texture = SubResource( 12 )
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeVectorOp" id=14]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 2, 2, 2 ) ]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id=16]
+operator = 2
+
+[sub_resource type="OpenSimplexNoise" id=17]
+octaves = 9
+period = 246.5
+persistence = 0.883
+
+[sub_resource type="NoiseTexture" id=18]
+noise = SubResource( 17 )
+
+[sub_resource type="VisualShaderNodeTexture" id=19]
+texture = SubResource( 18 )
+
+[sub_resource type="VisualShaderNodeVectorOp" id=20]
+default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
+operator = 2
+
+[sub_resource type="VisualShader" id=10]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx, async_visible;
+
+uniform sampler2D tex_frg_2 : hint_albedo;
+uniform sampler2D tex_frg_5;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Texture:2
+	vec4 tex_frg_2_read = texture(tex_frg_2, UV.xy);
+	vec3 n_out2p0 = tex_frg_2_read.rgb;
+	float n_out2p1 = tex_frg_2_read.a;
+
+// VectorOp:3
+	vec3 n_in3p1 = vec3(2.00000, 2.00000, 2.00000);
+	vec3 n_out3p0 = n_out2p0 * n_in3p1;
+
+// Texture:5
+	vec4 tex_frg_5_read = texture(tex_frg_5, UV.xy);
+	vec3 n_out5p0 = tex_frg_5_read.rgb;
+	float n_out5p1 = tex_frg_5_read.a;
+
+// VectorOp:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out6p0 = n_out5p0 * n_in6p1;
+
+// VectorOp:4
+	vec3 n_out4p0 = n_out3p0 * n_out6p0;
+
+// Output:0
+	ALBEDO = n_out4p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 804.1, 548.731 )
+nodes/fragment/0/position = Vector2( 1560, 240 )
+nodes/fragment/2/node = SubResource( 13 )
+nodes/fragment/2/position = Vector2( 640, 240 )
+nodes/fragment/3/node = SubResource( 14 )
+nodes/fragment/3/position = Vector2( 989.986, 391.388 )
+nodes/fragment/4/node = SubResource( 16 )
+nodes/fragment/4/position = Vector2( 1280, 480 )
+nodes/fragment/5/node = SubResource( 19 )
+nodes/fragment/5/position = Vector2( 622.786, 529.628 )
+nodes/fragment/6/node = SubResource( 20 )
+nodes/fragment/6/position = Vector2( 1020, 560 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 0, 0, 5, 0, 6, 0, 6, 0, 4, 1 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = SubResource( 10 )
+
 [node name="Game" type="Spatial"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( 10, 0, 0, 0, -0.849257, 5.27979, 0, -0.527979, -8.49257, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -0.849257, 0.527979, 0, -0.527979, -0.849257, 0, 0, 0 )
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody" parent="."]
 transform = Transform( 10, 0, 0, 0, 3, 0, 0, 0, 10, 0, -0.843257, 0 )
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Floor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.319775, 0 )
+visible = false
 shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Floor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238394, 0 )
+visible = false
 mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
-transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 0, -0.514705, 0 )
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00253, 0 )
-omni_range = 16.3183
-
-[node name="Mountain_winter_004" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1775, -2.71065, -62.6618 )
-visible = false
-
-[node name="Mountain_winter_003" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.781161, 0, 0.62433, 0, 1, 0, -0.62433, 0, 0.781161, -58.9569, -3.13278, -24.9349 )
-visible = false
-
-[node name="Mountain_winter_005" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.91368, 0, 0.406434, 0, 1, 0, -0.406434, 0, -0.91368, -35.6721, -2.49471, 63.3073 )
-visible = false
-
-[node name="Mountain_winter_006" parent="." instance=ExtResource( 3 )]
-transform = Transform( -0.96748, 0, -0.252948, 0, 1, 0, 0.252948, 0, -0.96748, 20.5755, -6.87293, 47.0369 )
-visible = false
-
-[node name="Mountain_winter_007" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.360697, 0, -0.932683, 0, 1, 0, 0.932683, 0, 0.360697, 61.9425, -3.2366, -19.6339 )
-visible = false
+transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, -7.07743, -2.34656, 0 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
 
 [node name="Satellite" parent="Viewport" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -70.7846, 86.1491, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -229.853, 214.756, 3.89765 )
 target_path = NodePath("../../Bubble")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.563571, 3.03751, 56.7174 )
+transform = Transform( 0.201984, 0, 0.979389, 0, 1, 0, -0.979389, 0, 0.201984, 26.6047, -1.17585, 16.759 )
 camera_viewport_path = NodePath("../Viewport")
 
 [node name="Earth" parent="." instance=ExtResource( 7 )]
 transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 397.747, 373.723 )
 
 [node name="Terrain" type="CSGMesh" parent="."]
-transform = Transform( 353.948, 0, 353.158, 0, 250, 0, -353.158, 0, 353.948, -225.22, 124.259, 39.2898 )
+transform = Transform( 353.948, 0, 353.158, 0, 500, 0, -353.158, 0, 353.948, -225.22, 66.4094, -119.054 )
 use_collision = true
 mesh = ExtResource( 8 )
+material = SubResource( 11 )
