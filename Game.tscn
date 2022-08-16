@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
+[ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
@@ -194,3 +195,8 @@ transform = Transform( 353.948, 0, 353.158, 0, 500, 0, -353.158, 0, 353.948, -22
 use_collision = true
 mesh = ExtResource( 8 )
 material = SubResource( 11 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Music"
