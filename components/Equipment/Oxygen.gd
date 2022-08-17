@@ -32,6 +32,5 @@ func _on_Timer_timeout() -> void:
 func percent() -> float:
 	return clamp(100.0 / initial_supply * supply_left, 0,100)
 
-func _on_OxygenTank_loss(loss, seconds_left, percent_left):
-	print_debug(str(percent_left))
+func _on_OxygenTank_loss(loss, seconds_left, percent_left) -> void:
 	$Barometer/Needle.rotation_degrees = Vector3(0,-((180+112)/100.0*percent_left),0)
