@@ -1,4 +1,4 @@
-extends Control
+extends Spatial
 
 # emit signal that oxygen has been lost with convenient values
 signal loss(loss, seconds_left, percent_left)
@@ -7,7 +7,7 @@ signal loss(loss, seconds_left, percent_left)
 export(int,60,600,60) var initial_supply = 5*60
 
 # Define how fast the oxygen should fall. If set to one, the oxygen falls 1/second.
-export(float) var loss_rate = 10
+export(float) var loss_rate = 50
 
 var supply_left:int = initial_supply
 
@@ -30,8 +30,8 @@ func _on_Timer_timeout() -> void:
 	$Timer.wait_time = 1.0/loss_rate
 
 func percent() -> float:
-	return 100.0 / initial_supply * supply_left
+	return clamp(100.0 / initial_supply * supply_left, 0,100)
 
 func _on_OxygenTank_loss(loss, seconds_left, percent_left):
 	print_debug(str(percent_left))
-	$Bar.value = percent_left
+	$Barometer/Needle.rotation_degrees = Vector3(0,-((180+112)/100.0*percent_left),0)
