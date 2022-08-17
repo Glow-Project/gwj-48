@@ -7,7 +7,7 @@ signal loss(loss, seconds_left, percent_left)
 export(int,60,600,60) var initial_supply = 5*60
 
 # Define how fast the oxygen should fall. If set to one, the oxygen falls 1/second.
-export(float) var loss_rate = 50
+export(float) var loss_rate = 1
 
 var supply_left:int = initial_supply
 
@@ -32,6 +32,5 @@ func _on_Timer_timeout() -> void:
 func percent() -> float:
 	return clamp(100.0 / initial_supply * supply_left, 0,100)
 
-func _on_OxygenTank_loss(loss, seconds_left, percent_left):
-	print_debug(str(percent_left))
+func _on_OxygenTank_loss(loss, seconds_left, percent_left) -> void:
 	$Barometer/Needle.rotation_degrees = Vector3(0,-((180+112)/100.0*percent_left),0)

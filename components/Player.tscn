@@ -89,6 +89,10 @@ script = ExtResource( 2 )
 [node name="AstronautHelmet" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 7.73947e-09, 0.996074, -0.0885292, 8.70795e-08, -0.0885292, -0.996074, 0, 3.3072, 0 )
 
+[node name="Map2" parent="AstronautHelmet" instance=ExtResource( 4 )]
+transform = Transform( -5, -3.55271e-15, 8.52651e-14, 7.10543e-15, 4.99999, 3.8743e-07, -2.84217e-14, 3.57628e-07, -3, -2.62616e-07, 0.266988, 3.00397 )
+visible = false
+
 [node name="Camera" type="Camera" parent="AstronautHelmet"]
 transform = Transform( -0.99991, 7.63903e-09, -0.0134036, 0.00118662, 0.996073, -0.0885213, 0.013351, -0.0885293, -0.995984, 6.29291e-09, 0.210441, -0.0719825 )
 current = true
@@ -103,16 +107,16 @@ flip_v = true
 transparent = false
 texture = SubResource( 6 )
 
-[node name="Map" parent="AstronautHelmet/Map" instance=ExtResource( 4 )]
-transform = Transform( -5, -7.10543e-15, 1.13687e-13, 7.10543e-15, 5, 3.8743e-07, -5.68434e-14, 3.57628e-07, -3, -7.25828e-09, 0.00737906, 0.0830252 )
-
 [node name="AlarmLight" type="OmniLight" parent="AstronautHelmet"]
-transform = Transform( -1, 7.73946e-09, 8.70795e-08, 7.4788e-15, 0.996073, -0.0885291, -8.74227e-08, -0.0885291, -0.996073, -0.300923, 0.29792, 0.369392 )
+transform = Transform( -1, 7.73946e-09, 8.70795e-08, 7.22315e-15, 0.996073, -0.0885291, -8.74227e-08, -0.0885291, -0.996073, -0.300923, 0.29792, 0.369392 )
 visible = false
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 6.114
 light_specular = 1.919
 omni_range = 2.491
+
+[node name="Oxygen" parent="AstronautHelmet" instance=ExtResource( 6 )]
+transform = Transform( -0.192836, -0.152607, 0.0203451, 1.30385e-08, -0.0177058, -0.298822, 0.229813, -0.128053, 0.0170716, 1.37672, 0.0628943, 1.17713 )
 
 [node name="Body" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -2.78442e-08, -1.296, 0, 0.637, -5.665e-08, 0, 1.85302, 0 )
@@ -136,6 +140,3 @@ anims/walk = SubResource( 4 )
 [node name="AmbienceAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/alarm = SubResource( 8 )
-
-[node name="Oxygen" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, -0.0175048, -0.999847, 0, 0.999847, -0.0175048, 0, 3.33399, -2.04482 )
