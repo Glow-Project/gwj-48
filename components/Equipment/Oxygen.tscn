@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/barometer.glb" type="PackedScene" id=1]
+[ext_resource path="res://components/Equipment/Oxygen.gd" type="Script" id=2]
+
+[node name="Oxygen" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Barometer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.819152, 0, -0.573577, 0, 1, 0, 0.573577, 0, 0.819152, 0, 0, 0 )
+
+[node name="Needle" parent="Barometer" index="2"]
+transform = Transform( 0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 0, 0.135362, 0 )
+
+[connection signal="loss" from="." to="." method="_on_OxygenTank_loss"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="Barometer"]
