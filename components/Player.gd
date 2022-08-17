@@ -9,6 +9,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 onready var map: Sprite3D = $"%Map"
 onready var map_position: Vector3 = map.translation
+onready var oxygen_position: Vector3 = $AstronautHelmet/Oxygen .translation
 onready var camera_viewport = get_node(camera_viewport_path)
 
 func _ready():
@@ -22,16 +23,26 @@ func _ready():
 func _process(delta: float):
 	if Input.is_action_just_pressed("open_map"):
 		var tw = create_tween()
-		if not map.visible:
-			tw.tween_property(map, "translation", map_position, 0.15)
-			tw.tween_property(map, "rotation_degrees", Vector3.ZERO, 0.15)
-		else:
-			tw.tween_property(map, "translation", Vector3(0, -2, 0), 0.15)
-			tw.tween_property(map, "rotation_degrees", Vector3(90, 0, 0), 0.15)
+		tw.tween_property(map, "translation", map_position, 0.15)
+		tw.tween_property(map, "rotation_degrees", Vector3.ZERO, 0.15)
 		tw.play()
-		if map.visible:
-			yield(tw, "finished")
-		map.visible = not map.visible
+		map.visible = true
+	elif Input.is_action_just_released("open_map"):
+		var tw = create_tween()
+		tw.tween_property(map, "translation", Vector3(0, -2, 0), 0.15)
+		tw.tween_property(map, "rotation_degrees", Vector3(90, 0, 0), 0.15)
+		tw.play()
+		yield(tw, "finished")
+		map.visible = false
+	elif Input.is_action_just_pressed("open_oxygen"):
+		var tw = create_tween()
+		tw.tween_property($AstronautHelmet/Oxygen, "translation", oxygen_position, 0.15)
+		tw.play()
+	elif Input.is_action_just_released("open_oxygen"):
+		var tw = create_tween()
+		tw.tween_property($AstronautHelmet/Oxygen, "translation", Vector3(0,-2,0), 0.15)
+		tw.play()
+		yield(tw, "finished")
 	elif Input.is_action_pressed("quit"):
 		get_tree().quit()
 
