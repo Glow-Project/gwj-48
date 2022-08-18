@@ -370,7 +370,7 @@ visible = false
 mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
-transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, -7.07743, -2.34656, 0 )
+transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, -171.855, -82.8391, -621.802 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
@@ -398,7 +398,7 @@ transform = Transform( -0.124231, -0.00935692, -0.99652, 1.49386, -0.0370616, -0
 
 [node name="DramaticLight" type="OmniLight" parent="Player"]
 transform = Transform( -0.993806, -0.0946124, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695795, -0.083252, 3.72146, -0.402328 )
-light_energy = 15.7528
+light_energy = 0.0
 light_negative = true
 omni_range = 8.246
 
