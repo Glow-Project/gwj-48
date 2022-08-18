@@ -3,6 +3,7 @@ extends KinematicBody
 export var speed: float = 5
 export var sensitivity: float = 0.005
 export var camera_viewport_path: NodePath
+export var controllable: bool = true
 
 var velocity := Vector3.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -21,6 +22,14 @@ func _ready():
 		yield(get_tree().create_timer(10), "timeout")
 
 func _process(delta: float):
+	if Input.is_action_pressed("quit"):
+		get_tree().quit()
+	
+	if not controllable: return
+	handle_input()
+	move_body(delta)
+
+func handle_input():
 	if Input.is_action_just_pressed("open_map"):
 		var tw = create_tween()
 		tw.tween_property(map, "translation", map_position, 0.15)
@@ -43,10 +52,7 @@ func _process(delta: float):
 		tw.tween_property($AstronautHelmet/Oxygen, "translation", Vector3(0,-2,0), 0.15)
 		tw.play()
 		yield(tw, "finished")
-	elif Input.is_action_pressed("quit"):
-		get_tree().quit()
 
-	move_body(delta)
 
 func move_body(delta: float):
 	# Add the gravity.
@@ -70,7 +76,7 @@ func move_body(delta: float):
 	move_and_slide(velocity)
 
 func _input(event):
-	if not (event is InputEventMouseMotion): return
+	if not controllable or not (event is InputEventMouseMotion): return
 	
 	rotation.y -= event.relative.x * sensitivity
 	$AstronautHelmet.rotation.x = clamp($AstronautHelmet.rotation.x + event.relative.y * sensitivity, -1, 1)

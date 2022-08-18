@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
@@ -151,7 +152,81 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 0, 0, 5
 [sub_resource type="ShaderMaterial" id=11]
 shader = SubResource( 10 )
 
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player/AstronautHelmet/Oxygen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Player/DramaticLight:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:controllable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/AstronautHelmet/Oxygen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Player/DramaticLight:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 16, -0.25, 0, 0.25, 0, 1.882, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3 )
+}
+tracks/3/type = "animation"
+tracks/3/path = NodePath("Player/AmbienceAnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": PoolStringArray( "alarm" ),
+"times": PoolRealArray( -0.1 )
+}
+
 [node name="Game" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -185,8 +260,20 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300.057, 214.756, 3.89765 )
 target_path = NodePath("../../Bubble")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.201984, 0, 0.979389, 0, 1, 0, -0.979389, 0, 0.201984, -561.769, -1.17586, -69.8141 )
+transform = Transform( -0.994976, -0.0992088, 0.0134064, -0.0640556, 0.527986, -0.846834, 0.076935, -0.843439, -0.531688, -544.937, -7.63248, -69.814 )
 camera_viewport_path = NodePath("../Viewport")
+
+[node name="Map" parent="Player/AstronautHelmet" index="3"]
+visible = false
+
+[node name="Oxygen" parent="Player/AstronautHelmet" index="5"]
+visible = false
+
+[node name="DramaticLight" type="OmniLight" parent="Player"]
+transform = Transform( -0.993806, -0.0946124, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695795, -0.083252, 3.72146, -0.402328 )
+light_energy = 0.0
+light_negative = true
+omni_range = 8.246
 
 [node name="Earth" parent="." instance=ExtResource( 7 )]
 transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 397.747, 373.723 )
@@ -203,4 +290,10 @@ autoplay = true
 bus = "Music"
 
 [node name="Node" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 30.7317, -0.980429, 8.587 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -545.404, -7.72898, -82.6537 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 21 )
+anims/start = SubResource( 22 )
+
+[editable path="Player"]
