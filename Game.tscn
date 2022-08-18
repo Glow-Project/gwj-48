@@ -393,9 +393,6 @@ visible = false
 [node name="Oxygen" parent="Player/AstronautHelmet" index="5"]
 visible = false
 
-[node name="Body" parent="Player" index="1"]
-transform = Transform( 1, 0, 0, 0, -2.78442e-08, -1.296, 0, 0.637, -5.665e-08, 0, 1.85302, 0 )
-
 [node name="OxygenTank" parent="Player/Body" index="0"]
 transform = Transform( -0.124231, -0.00935692, -0.99652, 1.49386, -0.0370616, -0.0824221, -0.0542424, -0.999269, 0.0123881, 6.10352e-05, 1.43259, 0 )
 
