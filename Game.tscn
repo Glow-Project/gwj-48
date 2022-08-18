@@ -181,11 +181,11 @@ transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, -7.07743
 size = Vector2( 600, 400 )
 
 [node name="Satellite" parent="Viewport" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -229.853, 214.756, 3.89765 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300.057, 214.756, 3.89765 )
 target_path = NodePath("../../Bubble")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.201984, 0, 0.979389, 0, 1, 0, -0.979389, 0, 0.201984, 26.6047, -1.17585, 16.759 )
+transform = Transform( 0.201984, 0, 0.979389, 0, 1, 0, -0.979389, 0, 0.201984, -561.769, -1.17586, -69.8141 )
 camera_viewport_path = NodePath("../Viewport")
 
 [node name="Earth" parent="." instance=ExtResource( 7 )]
