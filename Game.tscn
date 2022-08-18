@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
+[ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/bubble.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
@@ -200,3 +201,6 @@ material = SubResource( 11 )
 stream = ExtResource( 1 )
 autoplay = true
 bus = "Music"
+
+[node name="Node" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 30.7317, -0.980429, 8.587 )
