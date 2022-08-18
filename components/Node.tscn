@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Node.glb" type="PackedScene" id=1]
+[ext_resource path="res://components/Node.gd" type="Script" id=2]
+
+[node name="Node" instance=ExtResource( 1 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 2 )
+broken = true
+
+[node name="StatusLight" type="OmniLight" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.721996, 0.538467, -0.0154504 )
+light_color = Color( 1, 0, 0, 1 )
+light_energy = 3.484
+light_specular = 11.97
+omni_range = 0.456411
