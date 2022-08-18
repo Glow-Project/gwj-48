@@ -176,6 +176,66 @@ tracks/1/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Player/AstronautHelmet:rotation_degrees:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -43.185, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Player/AstronautHelmet:rotation_degrees:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( -180.815, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Player/AstronautHelmet:rotation_degrees:z")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Player/AstronautHelmet:translation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Player/AstronautHelmet:translation:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 3.3072, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Player/AstronautHelmet:translation:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=22]
 resource_name = "start"
@@ -187,7 +247,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( -0.1, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -199,7 +259,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( -0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -211,8 +271,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 16, -0.25, 0, 0.25, 0, 1.882, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 3 )
+"points": PoolRealArray( 16, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1, 3 )
 }
 tracks/3/type = "animation"
 tracks/3/path = NodePath("Player/AmbienceAnimationPlayer")
@@ -221,7 +281,67 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"clips": PoolStringArray( "alarm" ),
+"clips": PoolStringArray( "alarm", "alarm" ),
+"times": PoolRealArray( -0.1, 1.9 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Player/AstronautHelmet:rotation_degrees:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( -43.185, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Player/AstronautHelmet:rotation_degrees:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( -180.815, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Player/AstronautHelmet:rotation_degrees:z")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Player/AstronautHelmet:translation:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Player/AstronautHelmet:translation:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 3.3072, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Player/AstronautHelmet:translation:z")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( -0.1 )
 }
 
@@ -260,8 +380,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300.057, 214.756, 3.89765 )
 target_path = NodePath("../../Bubble")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.994976, -0.0992088, 0.0134064, -0.0640556, 0.527986, -0.846834, 0.076935, -0.843439, -0.531688, -544.937, -7.63248, -69.814 )
+transform = Transform( -0.998242, 0, 0.0592715, 0, 1, 0, -0.0592715, 0, -0.998242, -544.937, -7.63248, -73.9774 )
 camera_viewport_path = NodePath("../Viewport")
+controllable = false
+
+[node name="AstronautHelmet" parent="Player" index="0"]
+transform = Transform( -0.999899, -0.00973438, 0.0103715, 0, 0.729148, 0.684357, -0.0142241, 0.684287, -0.729074, 0, 3.3072, 0 )
 
 [node name="Map" parent="Player/AstronautHelmet" index="3"]
 visible = false
@@ -269,9 +393,15 @@ visible = false
 [node name="Oxygen" parent="Player/AstronautHelmet" index="5"]
 visible = false
 
+[node name="Body" parent="Player" index="1"]
+transform = Transform( 1, 0, 0, 0, -2.78442e-08, -1.296, 0, 0.637, -5.665e-08, 0, 1.85302, 0 )
+
+[node name="OxygenTank" parent="Player/Body" index="0"]
+transform = Transform( -0.124231, -0.00935692, -0.99652, 1.49386, -0.0370616, -0.0824221, -0.0542424, -0.999269, 0.0123881, 6.10352e-05, 1.43259, 0 )
+
 [node name="DramaticLight" type="OmniLight" parent="Player"]
 transform = Transform( -0.993806, -0.0946124, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695795, -0.083252, 3.72146, -0.402328 )
-light_energy = 0.0
+light_energy = 15.7528
 light_negative = true
 omni_range = 8.246
 
@@ -293,6 +423,7 @@ bus = "Music"
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -545.404, -7.72898, -82.6537 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 anims/RESET = SubResource( 21 )
 anims/start = SubResource( 22 )
 
