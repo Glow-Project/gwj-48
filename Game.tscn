@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/Earth.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/terrain2.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=9]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=10]
+[ext_resource path="res://assets/heightmap/data.hterrain" type="Resource" id=11]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -53,104 +55,10 @@ size = Vector2( 20, 20 )
 subdivide_width = 32
 subdivide_depth = 32
 
-[sub_resource type="OpenSimplexNoise" id=15]
-persistence = 0.0
-lacunarity = 0.1
-
-[sub_resource type="NoiseTexture" id=12]
-width = 1024
-height = 1024
-seamless = true
-noise = SubResource( 15 )
-
-[sub_resource type="VisualShaderNodeTexture" id=13]
-texture = SubResource( 12 )
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeVectorOp" id=14]
-default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 2, 2, 2 ) ]
-operator = 2
-
-[sub_resource type="VisualShaderNodeVectorOp" id=16]
-operator = 2
-
-[sub_resource type="OpenSimplexNoise" id=17]
-octaves = 9
-period = 246.5
-persistence = 0.883
-
-[sub_resource type="NoiseTexture" id=18]
-noise = SubResource( 17 )
-
-[sub_resource type="VisualShaderNodeTexture" id=19]
-texture = SubResource( 18 )
-
-[sub_resource type="VisualShaderNodeVectorOp" id=20]
-default_input_values = [ 0, Vector3( 0, 0, 0 ), 1, Vector3( 1, 1, 1 ) ]
-operator = 2
-
-[sub_resource type="VisualShader" id=10]
-code = "shader_type spatial;
-render_mode specular_schlick_ggx, async_visible;
-
-uniform sampler2D tex_frg_2 : hint_albedo;
-uniform sampler2D tex_frg_5;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// Texture:2
-	vec4 tex_frg_2_read = texture(tex_frg_2, UV.xy);
-	vec3 n_out2p0 = tex_frg_2_read.rgb;
-	float n_out2p1 = tex_frg_2_read.a;
-
-// VectorOp:3
-	vec3 n_in3p1 = vec3(2.00000, 2.00000, 2.00000);
-	vec3 n_out3p0 = n_out2p0 * n_in3p1;
-
-// Texture:5
-	vec4 tex_frg_5_read = texture(tex_frg_5, UV.xy);
-	vec3 n_out5p0 = tex_frg_5_read.rgb;
-	float n_out5p1 = tex_frg_5_read.a;
-
-// VectorOp:6
-	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
-	vec3 n_out6p0 = n_out5p0 * n_in6p1;
-
-// VectorOp:4
-	vec3 n_out4p0 = n_out3p0 * n_out6p0;
-
-// Output:0
-	ALBEDO = n_out4p0;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( 804.1, 548.731 )
-nodes/fragment/0/position = Vector2( 1560, 240 )
-nodes/fragment/2/node = SubResource( 13 )
-nodes/fragment/2/position = Vector2( 640, 240 )
-nodes/fragment/3/node = SubResource( 14 )
-nodes/fragment/3/position = Vector2( 989.986, 391.388 )
-nodes/fragment/4/node = SubResource( 16 )
-nodes/fragment/4/position = Vector2( 1280, 480 )
-nodes/fragment/5/node = SubResource( 19 )
-nodes/fragment/5/position = Vector2( 622.786, 529.628 )
-nodes/fragment/6/node = SubResource( 20 )
-nodes/fragment/6/position = Vector2( 1020, 560 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 3, 0, 3, 0, 4, 0, 4, 0, 0, 0, 5, 0, 6, 0, 6, 0, 4, 1 )
-
-[sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 10 )
+[sub_resource type="Resource" id=23]
+script = ExtResource( 10 )
+mode = 0
+textures = [ [  ], [  ] ]
 
 [sub_resource type="Animation" id=21]
 length = 0.001
@@ -370,7 +278,7 @@ visible = false
 mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
-transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, -7.07743, -2.34656, 0 )
+transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 219.764, 0.00125027, 218.718 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
@@ -380,7 +288,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300.057, 214.756, 3.89765 )
 target_path = NodePath("../../Bubble")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.998242, 0, 0.0592715, 0, 1, 0, -0.0592715, 0, -0.998242, -544.937, -7.63248, -73.9774 )
+transform = Transform( -0.998242, 0, 0.0592715, 0, 1, 0, -0.0592715, 0, -0.998242, 296.307, 0.274284, 108.896 )
+speed = 100.0
 camera_viewport_path = NodePath("../Viewport")
 controllable = false
 
@@ -402,14 +311,27 @@ light_energy = 15.7528
 light_negative = true
 omni_range = 8.246
 
-[node name="Earth" parent="." instance=ExtResource( 7 )]
-transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -529.565, 397.747, 373.723 )
+[node name="Terrain" type="Spatial" parent="."]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
+script = ExtResource( 9 )
+lod_scale = 5.0
+_terrain_data = ExtResource( 11 )
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 23 )
+render_layers = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = false
+shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
 
-[node name="Terrain" type="CSGMesh" parent="."]
-transform = Transform( 353.948, 0, 353.158, 0, 500, 0, -353.158, 0, 353.948, -225.22, 66.4094, -119.054 )
-use_collision = true
-mesh = ExtResource( 8 )
-material = SubResource( 11 )
+[node name="Earth" parent="." instance=ExtResource( 7 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 316.195, 397.747, -275.119 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
