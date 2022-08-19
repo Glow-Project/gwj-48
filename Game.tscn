@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://components/Satellite.tscn" type="PackedScene" id=5]
 [ext_resource path="res://components/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/Earth.tscn" type="PackedScene" id=7]
+[ext_resource path="res://components/Equipment/MicrophoneModule.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=9]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=10]
 [ext_resource path="res://assets/heightmap/data.hterrain" type="Resource" id=11]
@@ -392,5 +393,8 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 611.283, 1.44597, 27.1157 )
 reset_on_save = false
 anims/RESET = SubResource( 21 )
 anims/start = SubResource( 22 )
+
+[node name="MicrophoneModule" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.473, 0.695457, 134.418 )
 
 [editable path="Player"]
