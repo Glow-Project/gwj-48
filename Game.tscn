@@ -197,10 +197,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ false, true ]
 }
 tracks/2/type = "bezier"
 tracks/2/path = NodePath("Player/DramaticLight:light_energy")
@@ -344,6 +344,7 @@ visible = false
 
 [node name="Oxygen" parent="Player/AstronautHelmet" index="5"]
 visible = false
+supply_left = 150
 
 [node name="OxygenTank" parent="Player/Body" index="0"]
 transform = Transform( -0.124231, -0.00935692, -0.99652, 1.49386, -0.0370616, -0.0824221, -0.0542424, -0.999269, 0.0123881, 6.10352e-05, 1.43259, 0 )

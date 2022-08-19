@@ -9,7 +9,7 @@ export(int,60,600,60) var initial_supply = 5*60
 # Define how fast the oxygen should fall. If set to one, the oxygen falls 1/second.
 export(float) var loss_rate = 1
 
-var supply_left:int = initial_supply
+export var supply_left: int = initial_supply
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
