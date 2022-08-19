@@ -40,7 +40,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/zylann.hterrain/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/ppm-ui/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
 
 [global]
 
