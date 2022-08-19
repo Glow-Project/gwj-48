@@ -144,6 +144,36 @@ tracks/7/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Player:rotation_degrees:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Player:rotation_degrees:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 297.723, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("Player:rotation_degrees:z")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=22]
 resource_name = "start"
@@ -193,37 +223,37 @@ tracks/3/keys = {
 "times": PoolRealArray( -0.1, 1.9 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("Player/AstronautHelmet:rotation_degrees:x")
+tracks/4/path = NodePath("Player/AmbienceAudioPlayer:volume_db")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( -43.185, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -26, -0.3, -20, 0.3, 15, -15, -0.4, -11, 0.3, 7, -10, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.1, 2, 3 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("Player/AstronautHelmet:rotation_degrees:y")
+tracks/5/path = NodePath("Player:rotation_degrees:x")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"points": PoolRealArray( -180.815, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("Player/AstronautHelmet:rotation_degrees:z")
+tracks/6/path = NodePath("Player:rotation_degrees:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 297.723, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("Player/AstronautHelmet:translation:x")
+tracks/7/path = NodePath("Player:rotation_degrees:z")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -233,34 +263,34 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("Player/AstronautHelmet:translation:y")
+tracks/8/path = NodePath("Player/AstronautHelmet:rotation_degrees:x")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 3.3072, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -36.245, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath("Player/AstronautHelmet:translation:z")
+tracks/9/path = NodePath("Player/AstronautHelmet:rotation_degrees:y")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 179.185, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath("Player/AmbienceAudioPlayer:volume_db")
+tracks/10/path = NodePath("Player/AstronautHelmet:rotation_degrees:z")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -26, -0.3, -20, 0.3, 15, -15, -0.4, -11, 0.3, 7, -10, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1.1, 2, 3 )
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 
 [node name="Game" type="Spatial"]
@@ -293,18 +323,21 @@ transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 219.764,
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
 
-[node name="Satellite" parent="Viewport" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300.057, 214.756, 3.89765 )
-target_path = NodePath("../../Bubble")
+[node name="CenterPosition" type="Position3D" parent="Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 517.236, 12.6088, 493.405 )
+
+[node name="Satellite" parent="Viewport/CenterPosition" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -378.493, 396.111, -3.28748 )
+target_path = NodePath("..")
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.998242, 0, 0.0592715, 0, 1, 0, -0.0592715, 0, -0.998242, 296.307, 0.274284, 108.896 )
+transform = Transform( 0.465198, 0, -0.885207, 0, 1, 0, 0.885207, 0, 0.465198, 296.307, 0.274284, 108.896 )
 speed = 100.0
 camera_viewport_path = NodePath("../Viewport")
 controllable = false
 
 [node name="AstronautHelmet" parent="Player" index="0"]
-transform = Transform( -0.999899, -0.00973438, 0.0103715, 0, 0.729148, 0.684357, -0.0142241, 0.684287, -0.729074, 0, 3.3072, 0 )
+transform = Transform( -0.999899, -0.00840977, 0.0114716, 0, 0.806496, 0.59124, -0.014224, 0.59118, -0.806415, 0, 3.3072, 0 )
 
 [node name="Map" parent="Player/AstronautHelmet" index="3"]
 visible = false
@@ -344,7 +377,7 @@ shader_params/u_triplanar = false
 shader_params/u_tile_reduction = Plane( 0, 0, 0, 0 )
 
 [node name="Earth" parent="." instance=ExtResource( 7 )]
-transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 316.195, 397.747, -275.119 )
+transform = Transform( 300, 0, 0, 0, 300, 0, 0, 0, 300, 2801.6, 881.753, 157.594 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
@@ -352,7 +385,7 @@ autoplay = true
 bus = "Music"
 
 [node name="Node" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -545.404, -7.72898, -82.6537 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 611.283, 1.44597, 27.1157 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
