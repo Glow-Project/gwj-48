@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mate_voice_lines02.raw.mp3-e98e8767b6de89f0febc06df3b8fca76.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/mate_voice_lines02.raw.mp3"
+dest_files=[ "res://.import/mate_voice_lines02.raw.mp3-e98e8767b6de89f0febc06df3b8fca76.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
