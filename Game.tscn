@@ -430,8 +430,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.473, 0.695457, 134.418 )
 [node name="VoicelineTriggers" type="Spatial" parent="."]
 
 [node name="VoicelineTrigger" parent="VoicelineTriggers" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 556.084, 33.0128, 103.259 )
-radius = 70.0
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 565.688, 0, 82.1896 )
+radius = 50.217
 voiceline = ExtResource( 14 )
 
 [editable path="Player"]

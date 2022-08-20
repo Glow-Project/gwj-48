@@ -19,7 +19,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	map.texture = camera_viewport.get_texture()
 	for voiceline_trigger in get_tree().get_nodes_in_group("voiceline_trigger"):
-		voiceline_trigger.connect("trigger", self, "_receive_radio_signal")
+		voiceline_trigger.connect("triggered", self, "_receive_radio_signal")
 	while true:
 		$AmbienceAudioPlayer.play()
 		yield(get_tree().create_timer(10), "timeout")
@@ -74,7 +74,8 @@ func _input(event):
 
 func queue_radio_playback(audio):
 	if not $RadioPlayback.playing:
-		$RadioPlayback.play(audio)
+		$RadioPlayback.stream = audio
+		$RadioPlayback.play()
 	else:
 		queued_radio_playbacks.append(audio)
 
@@ -85,4 +86,5 @@ func _on_RadioPlayback_finished():
 	if not queued_radio_playbacks.empty():
 		# prevent the radio from playing the next audio immediately
 		yield(get_tree().create_timer(0.5), "timeout")
-		$RadioPlayback.play(queued_radio_playbacks.pop_front())
+		$RadioPlayback.stream = queued_radio_playbacks.pop_front()
+		$RadioPlayback.play()
