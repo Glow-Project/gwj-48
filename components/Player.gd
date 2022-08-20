@@ -43,16 +43,6 @@ func handle_input():
 		tw.play()
 		yield(tw, "finished")
 		map.visible = false
-	elif Input.is_action_just_pressed("open_oxygen"):
-		var tw = create_tween()
-		tw.tween_property($AstronautHelmet/Oxygen, "translation", oxygen_position, 0.15)
-		tw.play()
-	elif Input.is_action_just_released("open_oxygen"):
-		var tw = create_tween()
-		tw.tween_property($AstronautHelmet/Oxygen, "translation", Vector3(0,-2,0), 0.15)
-		tw.play()
-		yield(tw, "finished")
-
 
 func move_body(delta: float):
 	# Add the gravity.
