@@ -22,9 +22,6 @@ func _ready():
 		yield(get_tree().create_timer(10), "timeout")
 
 func _process(delta: float):
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
-	
 	if not controllable: return
 	handle_input()
 	move_body(delta)
