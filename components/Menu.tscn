@@ -1,0 +1,215 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/robotika_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://components/Menu.gd" type="Script" id=2]
+[ext_resource path="res://assets/robotika_small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/PanelStyle.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/voicelines/ai_sound_system.mp3" type="AudioStream" id=5]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Continue"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Pause"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 0.5 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Menu" type="ColorRect"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.521569 )
+script = ExtResource( 2 )
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.643
+anchor_bottom = 0.5
+margin_left = -513.0
+margin_top = -300.0
+margin_right = 365.568
+margin_bottom = 300.0
+rect_min_size = Vector2( 5.353, 0 )
+alignment = 1
+
+[node name="Label" type="Label" parent="MainContainer"]
+margin_top = 60.0
+margin_right = 1025.0
+margin_bottom = 215.0
+theme = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.478431, 0.478431, 0.478431, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 12
+text = "crack in the 
+shell"
+align = 1
+
+[node name="Separator" type="HSeparator" parent="MainContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 219.0
+margin_right = 1025.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 0, 75 )
+
+[node name="UICenterContainer" type="HBoxContainer" parent="MainContainer"]
+margin_top = 298.0
+margin_right = 1025.0
+margin_bottom = 540.0
+alignment = 1
+
+[node name="UIVerticalContainer" type="VBoxContainer" parent="MainContainer/UICenterContainer"]
+margin_left = 312.0
+margin_right = 712.0
+margin_bottom = 242.0
+rect_min_size = Vector2( 400, 0 )
+
+[node name="ContainerBackground" type="PanelContainer" parent="MainContainer/UICenterContainer/UIVerticalContainer"]
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+custom_styles/panel = ExtResource( 4 )
+
+[node name="KeyBindingContainer" type="VBoxContainer" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground"]
+margin_right = 400.0
+margin_bottom = 100.0
+
+[node name="MoveLabel" type="Label" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground/KeyBindingContainer"]
+margin_right = 400.0
+margin_bottom = 24.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "W,A,S,D    Move"
+align = 1
+valign = 1
+
+[node name="LookLabel" type="Label" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground/KeyBindingContainer"]
+margin_top = 28.0
+margin_right = 400.0
+margin_bottom = 52.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Mouse    Look"
+align = 1
+valign = 1
+
+[node name="MapLabel" type="Label" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground/KeyBindingContainer"]
+margin_top = 56.0
+margin_right = 400.0
+margin_bottom = 80.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "M        MAP "
+align = 1
+valign = 1
+
+[node name="ContainerBackground2" type="PanelContainer" parent="MainContainer/UICenterContainer/UIVerticalContainer"]
+margin_top = 104.0
+margin_right = 400.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 0, 30 )
+custom_styles/panel = ExtResource( 4 )
+
+[node name="VolumeContainer" type="HBoxContainer" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground2"]
+margin_right = 400.0
+margin_bottom = 30.0
+alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground2/VolumeContainer"]
+margin_top = 3.0
+margin_right = 115.0
+margin_bottom = 27.0
+custom_fonts/font = ExtResource( 3 )
+text = "Sound"
+
+[node name="Volume" type="HSlider" parent="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground2/VolumeContainer"]
+unique_name_in_owner = true
+margin_left = 119.0
+margin_right = 400.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 30 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainContainer/UICenterContainer/UIVerticalContainer"]
+margin_top = 138.0
+margin_right = 400.0
+margin_bottom = 242.0
+alignment = 1
+
+[node name="Exit" type="Button" parent="MainContainer/UICenterContainer/UIVerticalContainer/ButtonContainer"]
+margin_right = 400.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 100, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Exit"
+
+[node name="Continue" type="Button" parent="MainContainer/UICenterContainer/UIVerticalContainer/ButtonContainer"]
+margin_top = 54.0
+margin_right = 400.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 100, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Continue"
+anims/Continue = SubResource( 3 )
+anims/Pause = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="VolumeTest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="drag_ended" from="MainContainer/UICenterContainer/UIVerticalContainer/ContainerBackground2/VolumeContainer/Volume" to="." method="_on_Volume_drag_ended"]
+[connection signal="pressed" from="MainContainer/UICenterContainer/UIVerticalContainer/ButtonContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="MainContainer/UICenterContainer/UIVerticalContainer/ButtonContainer/Continue" to="." method="_on_Continue_pressed"]
