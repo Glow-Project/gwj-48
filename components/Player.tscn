@@ -162,3 +162,8 @@ anims/alarm = SubResource( 8 )
 
 [node name="Menu" parent="." instance=ExtResource( 8 )]
 visible = false
+
+[node name="RadioPlayback" type="AudioStreamPlayer" parent="."]
+bus = "Mate"
+
+[connection signal="finished" from="RadioPlayback" to="." method="_on_RadioPlayback_finished"]

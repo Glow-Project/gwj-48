@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=10]
 [ext_resource path="res://assets/heightmap/data.hterrain" type="Resource" id=11]
 [ext_resource path="res://assets/moon_flag_2 (2).png" type="Texture" id=12]
+[ext_resource path="res://components/VoicelineTrigger.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/voicelines/mate_voice_lines02.raw.mp3" type="AudioStream" id=14]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -424,5 +426,12 @@ anims/start = SubResource( 22 )
 
 [node name="MicrophoneModule" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.473, 0.695457, 134.418 )
+
+[node name="VoicelineTriggers" type="Spatial" parent="."]
+
+[node name="VoicelineTrigger" parent="VoicelineTriggers" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 556.084, 33.0128, 103.259 )
+radius = 70.0
+voiceline = ExtResource( 14 )
 
 [editable path="Player"]
