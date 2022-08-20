@@ -7,6 +7,7 @@ export var controllable: bool = true
 
 var velocity := Vector3.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var queued_radio_playbacks := []
 
 onready var map: Sprite3D = $"%Map"
 onready var map_position: Vector3 = map.translation
@@ -17,6 +18,8 @@ func _ready():
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	map.texture = camera_viewport.get_texture()
+	for voiceline_trigger in get_tree().get_nodes_in_group("voiceline_trigger"):
+		voiceline_trigger.connect("triggered", self, "_receive_radio_signal")
 	while true:
 		$AmbienceAudioPlayer.play()
 		yield(get_tree().create_timer(10), "timeout")
@@ -67,3 +70,21 @@ func _input(event):
 	
 	rotation.y -= event.relative.x * sensitivity
 	$AstronautHelmet.rotation.x = clamp($AstronautHelmet.rotation.x + event.relative.y * sensitivity, -1, 1)
+
+
+func queue_radio_playback(audio):
+	if not $RadioPlayback.playing:
+		$RadioPlayback.stream = audio
+		$RadioPlayback.play()
+	else:
+		queued_radio_playbacks.append(audio)
+
+func _receive_radio_signal(audio):
+	queue_radio_playback(audio)
+
+func _on_RadioPlayback_finished():
+	if not queued_radio_playbacks.empty():
+		# prevent the radio from playing the next audio immediately
+		yield(get_tree().create_timer(0.5), "timeout")
+		$RadioPlayback.stream = queued_radio_playbacks.pop_front()
+		$RadioPlayback.play()
