@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="GWJ48"
 run/main_scene="res://Intro.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/AstronautHelmet.png"
 
 [autoload]
 

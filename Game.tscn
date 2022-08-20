@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=9]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=10]
 [ext_resource path="res://assets/heightmap/data.hterrain" type="Resource" id=11]
+[ext_resource path="res://assets/moon_flag_2 (2).png" type="Texture" id=12]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -55,6 +56,22 @@ material = SubResource( 5 )
 size = Vector2( 20, 20 )
 subdivide_width = 32
 subdivide_depth = 32
+
+[sub_resource type="SpatialMaterial" id=24]
+albedo_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+
+[sub_resource type="CylinderMesh" id=25]
+material = SubResource( 24 )
+top_radius = 0.025
+bottom_radius = 0.025
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=26]
+albedo_texture = ExtResource( 12 )
+
+[sub_resource type="QuadMesh" id=27]
+material = SubResource( 26 )
+size = Vector2( 0.5, 0.5 )
 
 [sub_resource type="Resource" id=23]
 script = ExtResource( 10 )
@@ -320,6 +337,17 @@ mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
 transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 219.764, 0.00125027, 218.718 )
+
+[node name="Flag" type="Spatial" parent="Bubble"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09343, 0 )
+
+[node name="Stick" type="MeshInstance" parent="Bubble/Flag"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308041, -0.24677, 0 )
+mesh = SubResource( 25 )
+
+[node name="Flag" type="MeshInstance" parent="Bubble/Flag"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548584, -0.491088, 0 )
+mesh = SubResource( 27 )
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
