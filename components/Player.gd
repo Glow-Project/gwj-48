@@ -1,5 +1,6 @@
 extends KinematicBody
 
+signal stress()
 signal lost()
 
 export var speed: float = 5
@@ -22,6 +23,7 @@ func _ready():
 	Global.connect("player_equipped_radio", self, "_radio_equipped")
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$TheaterCurtain.hide()
 	$ArrowAnimationPlayer.play("default")
 	$Menu.get_node("%MouseSensitivity").value = sensitivity
 	map.texture = camera_viewport.get_texture()
@@ -103,12 +105,14 @@ func _on_RadioPlayback_finished():
 		$RadioPlayback.stream = queued_radio_playbacks.pop_front()
 		$RadioPlayback.play()
 
-
 func _on_Oxygen_empty():
 	emit_signal("lost")
 	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_level_empty3.mp3")
 	$AIAudioPlayer.play()
 
-
 func _on_Menu_update_mouse_sensitivity(value: float):
 	sensitivity = value
+
+func _on_Oxygen_loss(loss: float, seconds_left: int, percent_left: float):
+	if seconds_left == 64:
+		emit_signal("stress")

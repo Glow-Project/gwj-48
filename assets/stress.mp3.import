@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/stress.mp3-3585d914c9d701ce89e2e78be50103bd.mp3str"
+
+[deps]
+
+source_file="res://assets/stress.mp3"
+dest_files=[ "res://.import/stress.mp3-3585d914c9d701ce89e2e78be50103bd.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

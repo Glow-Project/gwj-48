@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/holy_done.mp3-625e7f63b31597528cad8959004bb1ea.mp3str"
+
+[deps]
+
+source_file="res://assets/holy_done.mp3"
+dest_files=[ "res://.import/holy_done.mp3-625e7f63b31597528cad8959004bb1ea.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://assets/alarm1.1.mp3" type="AudioStream" id=19]
 [ext_resource path="res://assets/voicelines/ai_oxygen_tanks_damaged.mp3" type="AudioStream" id=20]
 [ext_resource path="res://assets/voicelines/mate_voice_lines_back_to_base_2.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/holy_done.mp3" type="AudioStream" id=22]
+[ext_resource path="res://assets/PRIMELOgo.jpg" type="Texture" id=23]
+[ext_resource path="res://assets/image_2022-08-21_21-02-13.png" type="Texture" id=24]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -249,6 +252,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("BackgroundMusic:stream")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
 
 [sub_resource type="Animation" id=35]
 resource_name = "death"
@@ -316,7 +331,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=34]
 resource_name = "end"
-length = 5.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:controllable")
 tracks/0/interp = 1
@@ -389,7 +404,33 @@ tracks/5/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 21 )
 } ],
-"times": PoolRealArray( 2.9 )
+"times": PoolRealArray( 11.2 )
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("BackgroundMusic")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 22 )
+} ],
+"times": PoolRealArray( 1 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Credits:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 14, 15.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -536,6 +577,18 @@ tracks/12/keys = {
 } ],
 "times": PoolRealArray( 3.2 )
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Credits:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="BoxShape" id=29]
 extents = Vector3( 1, 26.3114, 141.878 )
@@ -557,6 +610,12 @@ font_data = ExtResource( 18 )
 
 [sub_resource type="BoxShape" id=36]
 extents = Vector3( 4.8478, 138.762, 127.838 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 40
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 18 )
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 3 )
@@ -599,6 +658,7 @@ skeleton = NodePath("../..")
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
+render_target_update_mode = 3
 
 [node name="CenterPosition" type="Position3D" parent="Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 517.236, 12.6088, 493.405 )
@@ -616,6 +676,9 @@ controllable = false
 
 [node name="AstronautHelmet" parent="Player" index="0"]
 transform = Transform( -0.999899, -0.00973438, 0.0103715, 0, 0.729148, 0.684357, -0.0142241, 0.684287, -0.729075, 0, 3.3072, 0 )
+
+[node name="Camera" parent="Player/AstronautHelmet" index="2"]
+current = false
 
 [node name="Map" parent="Player/AstronautHelmet" index="3"]
 visible = false
@@ -643,7 +706,7 @@ omni_range = 8.246
 [node name="Terrain" type="Spatial" parent="."]
 transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0 )
 script = ExtResource( 9 )
-lod_scale = 5.0
+lod_scale = 2.0
 _terrain_data = ExtResource( 11 )
 chunk_size = 32
 collision_enabled = true
@@ -761,7 +824,63 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 275.033, 0, 159.295 )
 transform = Transform( -0.487738, 0, -0.87299, 0, 1, 0, 0.87299, 0, -0.487738, 7.12064, 0, 3.65356 )
 shape = SubResource( 36 )
 
+[node name="Credits" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Credits"]
+anchor_right = 25.625
+anchor_bottom = 14.925
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/CenterContainer"]
+margin_left = 37.0
+margin_top = 123.0
+margin_right = 987.0
+margin_bottom = 474.0
+custom_constants/separation = 200
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/CenterContainer/HBoxContainer"]
+margin_right = 300.0
+margin_bottom = 351.0
+
+[node name="TextureRect" type="TextureRect" parent="Credits/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 300.0
+texture = ExtResource( 23 )
+
+[node name="Label" type="Label" parent="Credits/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 304.0
+margin_right = 300.0
+margin_bottom = 351.0
+custom_fonts/font = SubResource( 37 )
+text = "Tch1b0"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits/CenterContainer/HBoxContainer"]
+margin_left = 500.0
+margin_right = 950.0
+margin_bottom = 351.0
+
+[node name="TextureRect" type="TextureRect" parent="Credits/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 450.0
+margin_bottom = 300.0
+texture = ExtResource( 24 )
+
+[node name="Label" type="Label" parent="Credits/CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 304.0
+margin_right = 450.0
+margin_bottom = 351.0
+custom_fonts/font = SubResource( 37 )
+text = "evilc00kie"
+
 [connection signal="lost" from="Player" to="." method="_on_Player_lost"]
+[connection signal="stress" from="Player" to="." method="_on_Player_stress"]
 [connection signal="body_entered" from="GameEndArea" to="." method="_on_GameEndArea_body_entered"]
 
 [editable path="Player"]
