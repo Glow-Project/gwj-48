@@ -105,5 +105,5 @@ func _on_RadioPlayback_finished():
 
 func _on_Oxygen_empty():
 	emit_signal("lost")
-	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_empty.mp3")
+	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_level_empty3.mp3")
 	$AIAudioPlayer.play()
