@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/noBG-Wildling-Wallpaper 1080(1).png" type="Texture" id=1]
 [ext_resource path="res://assets/Wildcards.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/breathing.mp3" type="AudioStream" id=5]
 [ext_resource path="res://assets/Glass-Bottle-Shattering-www.fesliyanstudios.com.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Intro.gd" type="Script" id=7]
+[ext_resource path="res://assets/Title_Theme.tres" type="Theme" id=8]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -90,10 +91,22 @@ tracks/7/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Title:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "start"
-length = 10.0
+length = 12.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("GWJTheme:modulate:r")
 tracks/0/interp = 1
@@ -181,7 +194,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 8, 8.5, 9.4, 9.5 ),
+"times": PoolRealArray( 0, 8, 8.5, 9.4, 9.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -210,15 +223,27 @@ tracks/10/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 5 )
 }, {
-"end_offset": 3.38337,
+"end_offset": 2.84337,
 "start_offset": 0.0,
 "stream": ExtResource( 5 )
 }, {
-"end_offset": 0.0,
+"end_offset": 0.583134,
 "start_offset": 0.15,
 "stream": ExtResource( 6 )
 } ],
-"times": PoolRealArray( 2, 8.1, 9.4 )
+"times": PoolRealArray( 2, 8.1, 9.9 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Title:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 9.9, 9.925, 11.5, 12 ),
+"transitions": PoolRealArray( 1, 1, 0.5, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="AtlasTexture" id=3]
@@ -308,3 +333,17 @@ modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 20, 29.0001 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 5 )
+
+[node name="Title" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0.478431, 0.478431, 0.478431, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+custom_constants/shadow_as_outline = 12
+text = "Crack in the
+shell"
+align = 1
+valign = 1
