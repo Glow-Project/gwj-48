@@ -20,5 +20,5 @@ func _exit_tree():
 
 func _physics_process(delta):
 	# rotate satellite in circle around target
-	target.rotation_degrees.y -= speed * delta
+	target.rotation_degrees.y += speed * delta
 

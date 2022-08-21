@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal lost()
+
 export var speed: float = 5
 export var sensitivity: float = 0.005
 export var camera_viewport_path: NodePath
@@ -20,6 +22,7 @@ func _ready():
 	Global.connect("player_equipped_radio", self, "_radio_equipped")
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$ArrowAnimationPlayer.play("default")
 	map.texture = camera_viewport.get_texture()
 	for voiceline_trigger in get_tree().get_nodes_in_group("voiceline_trigger"):
 		voiceline_trigger.connect("triggered", self, "_receive_radio_signal")
@@ -50,7 +53,7 @@ func handle_input():
 func move_body(delta: float):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= (gravity / 2) * delta
+		velocity.y -= (gravity / 4) * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -79,6 +82,8 @@ func _radio_equipped():
 	$AmbienceAnimationPlayer.play("silent_alarm")
 	$AmbienceAudioPlayer.stream = preload("res://assets/breathing.mp3")
 	radio_equipped = true
+	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_radio_equipped.mp3")
+	$AIAudioPlayer.play()
 
 func queue_radio_playback(audio):
 	if (not $RadioPlayback.playing) and radio_equipped:
@@ -96,3 +101,9 @@ func _on_RadioPlayback_finished():
 		yield(get_tree().create_timer(0.5), "timeout")
 		$RadioPlayback.stream = queued_radio_playbacks.pop_front()
 		$RadioPlayback.play()
+
+
+func _on_Oxygen_empty():
+	emit_signal("lost")
+	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_empty.mp3")
+	$AIAudioPlayer.play()
