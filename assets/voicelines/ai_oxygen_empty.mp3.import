@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ai_oxygen_empty.mp3-16fbd54ee99477240f46e33a8443b861.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/ai_oxygen_empty.mp3"
+dest_files=[ "res://.import/ai_oxygen_empty.mp3-16fbd54ee99477240f46e33a8443b861.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

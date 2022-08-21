@@ -1,5 +1,7 @@
 extends KinematicBody
 
+signal lost()
+
 export var speed: float = 5
 export var sensitivity: float = 0.005
 export var camera_viewport_path: NodePath
@@ -98,3 +100,9 @@ func _on_RadioPlayback_finished():
 		yield(get_tree().create_timer(0.5), "timeout")
 		$RadioPlayback.stream = queued_radio_playbacks.pop_front()
 		$RadioPlayback.play()
+
+
+func _on_Oxygen_empty():
+	emit_signal("lost")
+	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_empty.mp3")
+	$AIAudioPlayer.play()
