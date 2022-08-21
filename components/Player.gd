@@ -22,6 +22,7 @@ func _ready():
 	Global.connect("player_equipped_radio", self, "_radio_equipped")
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$ArrowAnimationPlayer.play("default")
 	map.texture = camera_viewport.get_texture()
 	for voiceline_trigger in get_tree().get_nodes_in_group("voiceline_trigger"):
 		voiceline_trigger.connect("triggered", self, "_receive_radio_signal")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Material_005.material" type="Material" id=1]
 [ext_resource path="res://components/Equipment/Oxygen.gd" type="Script" id=2]
 [ext_resource path="res://assets/Material_002.material" type="Material" id=3]
+[ext_resource path="res://assets/Robtronika-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "barometer_Cylinder001"
@@ -62,6 +63,9 @@ surfaces/0 = {
 "vertex_count": 4
 }
 
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 4 )
+
 [node name="Oxygen" type="Spatial"]
 script = ExtResource( 2 )
 
@@ -89,6 +93,13 @@ mesh = SubResource( 3 )
 [node name="ScaleStart001" type="MeshInstance" parent="Barometer"]
 transform = Transform( 0.24869, 0, 0.968583, 0, 1, 0, -0.968583, 0, 0.24869, 0.638932, 0.0798124, 0.253791 )
 mesh = SubResource( 4 )
+
+[node name="O2Label" type="Label3D" parent="Barometer"]
+transform = Transform( 0.0816027, -0.0578014, 7.66516e-10, -9.74825e-11, 1.1885e-09, 0.1, -0.0578014, -0.0816027, 9.13499e-10, -0.202202, 0.0803601, -0.29542 )
+pixel_size = 0.1
+alpha_cut = 1
+text = "OXYgen"
+font = SubResource( 5 )
 
 [connection signal="loss" from="." to="." method="_on_OxygenTank_loss"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
