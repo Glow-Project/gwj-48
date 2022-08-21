@@ -20,7 +20,7 @@
 [ext_resource path="res://assets/Robtronika-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/alarm1.1.mp3" type="AudioStream" id=19]
 [ext_resource path="res://assets/voicelines/ai_oxygen_tanks_damaged.mp3" type="AudioStream" id=20]
-[ext_resource path="res://assets/voicelines/buddy_end_voiceline.mp3" type="AudioStream" id=21]
+[ext_resource path="res://assets/voicelines/mate_voice_lines_back_to_base_2.mp3" type="AudioStream" id=21]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -237,6 +237,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [ 30.0 ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Player/AstronautHelmet:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=35]
 resource_name = "death"
@@ -377,7 +389,7 @@ tracks/5/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 21 )
 } ],
-"times": PoolRealArray( 3 )
+"times": PoolRealArray( 2.9 )
 }
 
 [sub_resource type="Animation" id=22]
@@ -626,7 +638,6 @@ stream = ExtResource( 20 )
 transform = Transform( -0.993806, -0.0946123, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695794, -0.083252, 3.72146, -0.402328 )
 light_energy = 0.0
 light_indirect_energy = 30.0
-light_specular = 16.0
 omni_range = 8.246
 
 [node name="Terrain" type="Spatial" parent="."]

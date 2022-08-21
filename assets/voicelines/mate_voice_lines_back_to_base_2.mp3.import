@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mate_voice_lines_back_to_base_2.mp3-7eec55614b14d72f3a65ec0b528681f7.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/mate_voice_lines_back_to_base_2.mp3"
+dest_files=[ "res://.import/mate_voice_lines_back_to_base_2.mp3-7eec55614b14d72f3a65ec0b528681f7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
