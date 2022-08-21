@@ -79,6 +79,8 @@ func _radio_equipped():
 	$AmbienceAnimationPlayer.play("silent_alarm")
 	$AmbienceAudioPlayer.stream = preload("res://assets/breathing.mp3")
 	radio_equipped = true
+	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_radio_equipped.mp3")
+	$AIAudioPlayer.play()
 
 func queue_radio_playback(audio):
 	if (not $RadioPlayback.playing) and radio_equipped:

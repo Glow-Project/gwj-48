@@ -119,6 +119,12 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
+speed = null
+sensitivity = null
+camera_viewport_path = null
+controllable = null
+has_microphone = null
+radio_equipped = null
 
 [node name="AstronautHelmet" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1, 0, -8.74228e-08, 7.73947e-09, 0.996074, -0.0885292, 8.70795e-08, -0.0885292, -0.996074, 0, 3.3072, 0 )
@@ -166,9 +172,12 @@ transform = Transform( -0.124231, -0.00935693, -0.99652, 1.49386, -0.0370617, -0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25844, 0 )
 shape = SubResource( 2 )
 
-[node name="AmbienceAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-bus = "Player"
+[node name="IndicationArrow" type="Sprite3D" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 175, 0 )
+texture = ExtResource( 9 )
+
+[node name="Menu" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
@@ -179,14 +188,13 @@ anims/RESET = SubResource( 7 )
 anims/alarm = SubResource( 8 )
 anims/silent_alarm = SubResource( 9 )
 
-[node name="Menu" parent="." instance=ExtResource( 8 )]
-visible = false
-
 [node name="RadioPlayback" type="AudioStreamPlayer" parent="."]
 bus = "Mate"
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 175, 0 )
-texture = ExtResource( 9 )
+[node name="AmbienceAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Player"
+
+[node name="AIAudioPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="finished" from="RadioPlayback" to="." method="_on_RadioPlayback_finished"]

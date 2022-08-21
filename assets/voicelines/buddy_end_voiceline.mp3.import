@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/buddy_end_voiceline.mp3-e56d176defcac531d193fad6653deae2.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/buddy_end_voiceline.mp3"
+dest_files=[ "res://.import/buddy_end_voiceline.mp3-e56d176defcac531d193fad6653deae2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

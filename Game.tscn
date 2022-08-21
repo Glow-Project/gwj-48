@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://assets/voicelines/mate_voice_lines_satellite_hint_1.mp3" type="AudioStream" id=16]
 [ext_resource path="res://assets/voicelines/mate_voice_lines_mountain_hint_1.mp3" type="AudioStream" id=17]
 [ext_resource path="res://assets/Robtronika-Regular.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://assets/alarm1.1.mp3" type="AudioStream" id=19]
+[ext_resource path="res://assets/voicelines/ai_oxygen_tanks_damaged.mp3" type="AudioStream" id=20]
+[ext_resource path="res://assets/voicelines/buddy_end_voiceline.mp3" type="AudioStream" id=21]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -198,10 +201,22 @@ tracks/10/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Player/DramaticLight:light_negative")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=22]
-resource_name = "start"
-length = 3.0
+[sub_resource type="Animation" id=34]
+resource_name = "end"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player:controllable")
 tracks/0/interp = 1
@@ -209,7 +224,86 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Player/DramaticLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Player/DramaticLight:light_negative")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Player/DramaticLight:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player/DramaticLight:light_specular")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.5, 16.0 ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 3 )
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "start"
+length = 7.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Player:controllable")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -221,7 +315,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -234,7 +328,7 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "points": PoolRealArray( 16, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 3 )
+"times": PoolRealArray( 0, 7 )
 }
 tracks/3/type = "animation"
 tracks/3/path = NodePath("Player/AmbienceAnimationPlayer")
@@ -243,8 +337,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"clips": PoolStringArray( "alarm", "alarm" ),
-"times": PoolRealArray( -0.1, 1.9 )
+"clips": PoolStringArray( "alarm", "alarm", "alarm", "alarm" ),
+"times": PoolRealArray( -0.1, 1.9, 3.87, 5.9 )
 }
 tracks/4/type = "bezier"
 tracks/4/path = NodePath("Player/AmbienceAudioPlayer:volume_db")
@@ -253,8 +347,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -26, -0.3, -20, 0.3, 15, -15, -0.4, -11, 0.3, 7, -10, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 1.1, 2, 3 )
+"points": PoolRealArray( -50, -0.25, 0, 0.25, 0, -26, -0.3, -20, 0.3, 15, -15, -0.4, -11, 0.3, 7, -9.7821, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, -9.7821, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.1, 2, 3.1, 3.2, 3.9, 3.901, 3.902, 3.94, 4.3, 4.34, 5.4, 5.44, 5.94, 6.01, 6.4, 6.6, 7 )
 }
 tracks/5/type = "bezier"
 tracks/5/path = NodePath("Player:rotation_degrees:x")
@@ -315,6 +409,32 @@ tracks/10/enabled = true
 tracks/10/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Player/DramaticLight:light_negative")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/12/type = "audio"
+tracks/12/path = NodePath("Player/AIAudioPlayer")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"clips": [ {
+"end_offset": 0.6,
+"start_offset": 0.3,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 3.2 )
 }
 
 [sub_resource type="BoxShape" id=29]
@@ -404,13 +524,17 @@ supply_left = 150
 [node name="OxygenTank" parent="Player/Body" index="0"]
 transform = Transform( -0.124231, -0.00935692, -0.99652, 1.49386, -0.0370616, -0.0824221, -0.0542424, -0.999269, 0.0123881, 6.10352e-05, 1.43259, 0 )
 
-[node name="AmbienceAudioPlayer" parent="Player" index="3"]
-volume_db = -50.0
+[node name="AmbienceAudioPlayer" parent="Player" index="8"]
+stream = ExtResource( 19 )
+volume_db = -10.9443
+
+[node name="AIAudioPlayer" parent="Player" index="9"]
+stream = ExtResource( 20 )
 
 [node name="DramaticLight" type="OmniLight" parent="Player"]
-transform = Transform( -0.993806, -0.0946124, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695795, -0.083252, 3.72146, -0.402328 )
-light_energy = 16.0
-light_negative = true
+transform = Transform( -0.993806, -0.0946123, 0.0582855, -0.107663, 0.689881, -0.715872, 0.0275202, -0.717713, -0.695794, -0.083252, 3.72146, -0.402328 )
+light_energy = 100.0
+light_specular = 16.0
 omni_range = 8.246
 
 [node name="Terrain" type="Spatial" parent="."]
@@ -440,12 +564,10 @@ stream = ExtResource( 1 )
 autoplay = true
 bus = "Music"
 
-[node name="Node" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 298.59, 0.844404, 99.5115 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
 anims/RESET = SubResource( 21 )
+anims/end = SubResource( 34 )
 anims/start = SubResource( 22 )
 
 [node name="MicrophoneModule" parent="." instance=ExtResource( 8 )]
@@ -504,5 +626,31 @@ billboard = 2
 alpha_cut = 1
 text = "HOLD M"
 font = SubResource( 33 )
+
+[node name="Nodes" type="Spatial" parent="."]
+
+[node name="Node" parent="Nodes" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 298.59, 0.844404, 99.5115 )
+
+[node name="Node2" parent="Nodes" instance=ExtResource( 2 )]
+transform = Transform( -1.99759, 0, 0.0981878, 0, 2, 0, -0.0981878, 0, -1.99759, 777.289, 7.79477, 160.649 )
+broken = false
+
+[node name="Node3" parent="Nodes" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 753.498, 13.6297, 716.726 )
+broken = false
+
+[node name="Node4" parent="Nodes" instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 440.213, 7.23065, 860.384 )
+broken = false
+
+[node name="Node5" parent="Nodes" instance=ExtResource( 2 )]
+transform = Transform( 1.89588, -0.636893, 0, 0.636893, 1.89588, 0, 0, 0, 2, 166.816, 6.75136, 416.654 )
+broken = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
+[connection signal="body_entered" from="GameEndArea" to="." method="_on_GameEndArea_body_entered"]
 
 [editable path="Player"]
