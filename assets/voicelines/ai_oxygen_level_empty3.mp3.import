@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ai_oxygen_level_empty3.mp3-956c2471376ecf92cccee9086
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

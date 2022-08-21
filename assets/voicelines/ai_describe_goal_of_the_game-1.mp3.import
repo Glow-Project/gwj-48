@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ai_describe_goal_of_the_game-1.mp3-61a5486660cf02b47b393a6f8cb74354.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/ai_describe_goal_of_the_game-1.mp3"
+dest_files=[ "res://.import/ai_describe_goal_of_the_game-1.mp3-61a5486660cf02b47b393a6f8cb74354.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

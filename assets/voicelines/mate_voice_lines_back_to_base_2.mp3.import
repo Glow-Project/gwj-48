@@ -11,5 +11,5 @@ dest_files=[ "res://.import/mate_voice_lines_back_to_base_2.mp3-7eec55614b14d72f
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/AstronautHelmet.glb" type="PackedScene" id=1]
 [ext_resource path="res://components/Player.gd" type="Script" id=2]
@@ -134,6 +134,12 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 175, 0 ), Vector3( 0, 150, 0 ), Vector3( 0, 175, 0 ) ]
 }
 
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="QuadMesh" id=12]
+material = SubResource( 11 )
+
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 2 )
 
@@ -212,6 +218,11 @@ bus = "Player"
 [node name="ArrowAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 10 )
 
+[node name="TheaterCurtain" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36013, 0 )
+mesh = SubResource( 12 )
+
 [connection signal="empty" from="AstronautHelmet/Oxygen" to="." method="_on_Oxygen_empty"]
+[connection signal="loss" from="AstronautHelmet/Oxygen" to="." method="_on_Oxygen_loss"]
 [connection signal="update_mouse_sensitivity" from="Menu" to="." method="_on_Menu_update_mouse_sensitivity"]
 [connection signal="finished" from="RadioPlayback" to="." method="_on_RadioPlayback_finished"]
