@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mate_voice_lines_mountain_hint_2.mp3-0d6b87aa9484a25bd4554548f2a3135e.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/mate_voice_lines_mountain_hint_2.mp3"
+dest_files=[ "res://.import/mate_voice_lines_mountain_hint_2.mp3-0d6b87aa9484a25bd4554548f2a3135e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -4,6 +4,8 @@ export var speed: float = 5
 export var sensitivity: float = 0.005
 export var camera_viewport_path: NodePath
 export var controllable: bool = true
+export var has_microphone: bool = false
+export var radio_equipped: bool = false
 
 var velocity := Vector3.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -15,6 +17,7 @@ onready var oxygen_position: Vector3 = $AstronautHelmet/Oxygen .translation
 onready var camera_viewport = get_node(camera_viewport_path)
 
 func _ready():
+	Global.connect("player_equipped_radio", self, "_radio_equipped")
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	map.texture = camera_viewport.get_texture()
@@ -47,7 +50,7 @@ func handle_input():
 func move_body(delta: float):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= (gravity / 2) * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -62,7 +65,7 @@ func move_body(delta: float):
 
 	$AnimationPlayer.play("RESET" if input_dir == Vector2.ZERO else "walk")
 
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 func _input(event):
@@ -72,8 +75,13 @@ func _input(event):
 	$AstronautHelmet.rotation.x = clamp($AstronautHelmet.rotation.x + event.relative.y * sensitivity, -1, 1)
 
 
+func _radio_equipped():
+	$AmbienceAnimationPlayer.play("silent_alarm")
+	$AmbienceAudioPlayer.stream = preload("res://assets/breathing.mp3")
+	radio_equipped = true
+
 func queue_radio_playback(audio):
-	if not $RadioPlayback.playing:
+	if (not $RadioPlayback.playing) and radio_equipped:
 		$RadioPlayback.stream = audio
 		$RadioPlayback.play()
 	else:
@@ -83,7 +91,7 @@ func _receive_radio_signal(audio):
 	queue_radio_playback(audio)
 
 func _on_RadioPlayback_finished():
-	if not queued_radio_playbacks.empty():
+	if (not queued_radio_playbacks.empty()) and radio_equipped:
 		# prevent the radio from playing the next audio immediately
 		yield(get_tree().create_timer(0.5), "timeout")
 		$RadioPlayback.stream = queued_radio_playbacks.pop_front()

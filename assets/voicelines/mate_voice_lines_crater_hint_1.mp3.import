@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mate_voice_lines_crater_hint_1.mp3-73c5093201d1033b4a56d1653f4c9a56.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/mate_voice_lines_crater_hint_1.mp3"
+dest_files=[ "res://.import/mate_voice_lines_crater_hint_1.mp3-73c5093201d1033b4a56d1653f4c9a56.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

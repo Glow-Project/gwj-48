@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mate_voice_lines_clockwise_hint_2.mp3-f5b480ed9c5a6903f3ef7e3334eaabec.mp3str"
+
+[deps]
+
+source_file="res://assets/voicelines/mate_voice_lines_clockwise_hint_2.mp3"
+dest_files=[ "res://.import/mate_voice_lines_clockwise_hint_2.mp3-f5b480ed9c5a6903f3ef7e3334eaabec.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
