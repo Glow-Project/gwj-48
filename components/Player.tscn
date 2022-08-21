@@ -213,4 +213,5 @@ bus = "Player"
 anims/default = SubResource( 10 )
 
 [connection signal="empty" from="AstronautHelmet/Oxygen" to="." method="_on_Oxygen_empty"]
+[connection signal="update_mouse_sensitivity" from="Menu" to="." method="_on_Menu_update_mouse_sensitivity"]
 [connection signal="finished" from="RadioPlayback" to="." method="_on_RadioPlayback_finished"]

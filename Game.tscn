@@ -252,7 +252,7 @@ tracks/14/keys = {
 
 [sub_resource type="Animation" id=35]
 resource_name = "death"
-length = 4.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player/DramaticLight:visible")
 tracks/0/interp = 1

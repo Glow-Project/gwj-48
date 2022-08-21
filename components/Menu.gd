@@ -1,5 +1,7 @@
 extends Control
 
+signal update_mouse_sensitivity(value)
+
 onready var volume_slider: Slider = $"%Volume"
 onready var mouse_slider: Slider = $"%MouseSensitivity"
 
@@ -18,10 +20,13 @@ func _process(delta):
 		# update volume slider
 		volume_slider.value = db2linear(AudioServer.get_bus_volume_db(0))
 
-func _on_Volume_drag_ended(value_changed):
+func _on_Volume_drag_ended(_value_changed):
 	AudioServer.set_bus_volume_db(0, linear2db(volume_slider.value))
 	if not $VolumeTest.playing:
 		$VolumeTest.play()
+
+func _on_MouseSensitivity_drag_ended(_value_changed):
+	emit_signal("update_mouse_sensitivity", mouse_slider.value)
 
 func _on_Continue_pressed():
 	hide()

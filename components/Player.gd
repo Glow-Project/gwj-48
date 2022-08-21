@@ -23,6 +23,7 @@ func _ready():
 	map.translation = Vector3(0, -2, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$ArrowAnimationPlayer.play("default")
+	$Menu.get_node("%MouseSensitivity").value = sensitivity
 	map.texture = camera_viewport.get_texture()
 	for voiceline_trigger in get_tree().get_nodes_in_group("voiceline_trigger"):
 		voiceline_trigger.connect("triggered", self, "_receive_radio_signal")
@@ -107,3 +108,7 @@ func _on_Oxygen_empty():
 	emit_signal("lost")
 	$AIAudioPlayer.stream = preload("res://assets/voicelines/ai_oxygen_level_empty3.mp3")
 	$AIAudioPlayer.play()
+
+
+func _on_Menu_update_mouse_sensitivity(value: float):
+	sensitivity = value
