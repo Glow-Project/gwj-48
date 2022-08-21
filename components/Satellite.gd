@@ -13,6 +13,7 @@ func _ready():
 	Global.satellite = self
 	center_radius = global_translation.distance_to(target.global_translation)
 	if op_map: $Camera.look_at(target.global_translation, Vector3.UP)
+	$AnimationPlayer.play("Blinking")
 
 func _exit_tree():
 	Global.satellite = null
