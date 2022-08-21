@@ -1,7 +1,7 @@
 extends Control
 
-
 onready var volume_slider: Slider = $"%Volume"
+onready var mouse_slider: Slider = $"%MouseSensitivity"
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
