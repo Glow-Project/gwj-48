@@ -38,7 +38,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="SphereShape" id=3]
-radius = 5.0258
+radius = 10.0
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 4 )
