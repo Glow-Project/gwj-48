@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -13,7 +13,10 @@
 [ext_resource path="res://assets/heightmap/data.hterrain" type="Resource" id=11]
 [ext_resource path="res://assets/moon_flag_2 (2).png" type="Texture" id=12]
 [ext_resource path="res://components/VoicelineTrigger.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/voicelines/mate_voice_lines02.raw.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/voicelines/mate_voice_lines_crater_hint_2.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/voicelines/mate_voice_lines_clockwise_hint_2.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/voicelines/mate_voice_lines_satellite_hint_1.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/voicelines/mate_voice_lines_mountain_hint_1.mp3" type="AudioStream" id=17]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -313,6 +316,12 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 )
 }
 
+[sub_resource type="BoxShape" id=29]
+extents = Vector3( 1, 26.3114, 141.878 )
+
+[sub_resource type="BoxShape" id=28]
+extents = Vector3( 185.184, 150.744, 11.8769 )
+
 [node name="Game" type="Spatial"]
 script = ExtResource( 3 )
 
@@ -361,10 +370,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 517.236, 12.6088, 493.405 )
 [node name="Satellite" parent="Viewport/CenterPosition" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -378.493, 396.111, -3.28748 )
 target_path = NodePath("..")
+speed = 5.0
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.465198, 0, -0.885207, 0, 1, 0, 0.885207, 0, 0.465198, 296.307, 0.274284, 108.896 )
-speed = 100.0
+speed = 30.0
 camera_viewport_path = NodePath("../Viewport")
 controllable = false
 
@@ -418,7 +428,7 @@ autoplay = true
 bus = "Music"
 
 [node name="Node" parent="." instance=ExtResource( 2 )]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 611.283, 1.44597, 27.1157 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 298.59, 0.844404, 99.5115 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -431,8 +441,33 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 331.473, 0.695457, 134.418 )
 [node name="VoicelineTriggers" type="Spatial" parent="."]
 
 [node name="VoicelineTrigger" parent="VoicelineTriggers" instance=ExtResource( 13 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 565.688, 0, 82.1896 )
-radius = 50.217
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 449.246, 18.0806, 123.384 )
+use_custom_collision_shape = true
+voiceline = ExtResource( 16 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VoicelineTriggers/VoicelineTrigger"]
+shape = SubResource( 29 )
+
+[node name="VoicelineTrigger2" parent="VoicelineTriggers" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 718.878, -7.62939e-06, 115.149 )
+radius = 90.0
+voiceline = ExtResource( 17 )
+
+[node name="VoicelineTrigger3" parent="VoicelineTriggers" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 910.626, -7.62939e-06, 396.944 )
+radius = 90.0
 voiceline = ExtResource( 14 )
+
+[node name="VoicelineTrigger4" parent="VoicelineTriggers" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 760.657, -7.62939e-06, 832.279 )
+radius = 190.0
+voiceline = ExtResource( 15 )
+
+[node name="GameEndArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 204.556, 0, 276.712 )
+
+[node name="CollisionShape" type="CollisionShape" parent="GameEndArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.705, 0, 0 )
+shape = SubResource( 28 )
 
 [editable path="Player"]

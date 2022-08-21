@@ -1,5 +1,7 @@
 extends Node
 
+signal player_equipped_radio()
+
 var satellite: Spatial = null
 
 func _init():

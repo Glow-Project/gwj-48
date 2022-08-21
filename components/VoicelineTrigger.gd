@@ -18,5 +18,6 @@ func set_radius(value):
 
 func _on_VoicelineTrigger_body_entered(body):
 	if body is KinematicBody:
+		print(body)
 		emit_signal("triggered", voiceline)
 		queue_free()

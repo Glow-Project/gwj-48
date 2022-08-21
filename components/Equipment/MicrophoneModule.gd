@@ -11,6 +11,7 @@ func _ready():
 func _process(_delta):
 	if body_inside and Input.is_action_just_pressed("ui_accept"):
 		emit_signal("picked_up")
+		Global.emit_signal("player_equipped_radio")
 		queue_free()
 
 func _on_Area_body_entered(body):
