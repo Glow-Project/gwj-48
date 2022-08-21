@@ -227,7 +227,7 @@ tracks/10/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 5 )
 }, {
-"end_offset": 0.583134,
+"end_offset": 0.629785,
 "start_offset": 0.15,
 "stream": ExtResource( 6 )
 } ],
@@ -240,7 +240,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 9.9, 9.925, 11.5, 12 ),
+"times": PoolRealArray( 0, 9.9, 9.925, 11.5, 11.9 ),
 "transitions": PoolRealArray( 1, 1, 0.5, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
