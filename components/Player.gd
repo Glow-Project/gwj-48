@@ -50,7 +50,7 @@ func handle_input():
 func move_body(delta: float):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= (gravity / 2) * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -65,7 +65,7 @@ func move_body(delta: float):
 
 	$AnimationPlayer.play("RESET" if input_dir == Vector2.ZERO else "walk")
 
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 func _input(event):

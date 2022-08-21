@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -319,6 +319,15 @@ tracks/10/keys = {
 [sub_resource type="BoxShape" id=29]
 extents = Vector3( 1, 26.3114, 141.878 )
 
+[sub_resource type="BoxShape" id=30]
+extents = Vector3( 1, 49.1913, 122.833 )
+
+[sub_resource type="BoxShape" id=31]
+extents = Vector3( 133.358, 51.2326, 1 )
+
+[sub_resource type="BoxShape" id=32]
+extents = Vector3( 15.2815, 89.8816, 180.152 )
+
 [sub_resource type="BoxShape" id=28]
 extents = Vector3( 185.184, 150.744, 11.8769 )
 
@@ -451,17 +460,31 @@ shape = SubResource( 29 )
 [node name="VoicelineTrigger2" parent="VoicelineTriggers" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 718.878, -7.62939e-06, 115.149 )
 radius = 90.0
+use_custom_collision_shape = true
 voiceline = ExtResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VoicelineTriggers/VoicelineTrigger2"]
+shape = SubResource( 30 )
 
 [node name="VoicelineTrigger3" parent="VoicelineTriggers" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 910.626, -7.62939e-06, 396.944 )
 radius = 90.0
+use_custom_collision_shape = true
 voiceline = ExtResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VoicelineTriggers/VoicelineTrigger3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2776, 1.52588e-05, 1.43832 )
+shape = SubResource( 31 )
 
 [node name="VoicelineTrigger4" parent="VoicelineTriggers" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 760.657, -7.62939e-06, 832.279 )
 radius = 190.0
+use_custom_collision_shape = true
 voiceline = ExtResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="VoicelineTriggers/VoicelineTrigger4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.927, 0 )
+shape = SubResource( 32 )
 
 [node name="GameEndArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 204.556, 0, 276.712 )
