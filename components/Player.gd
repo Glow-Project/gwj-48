@@ -50,7 +50,7 @@ func handle_input():
 func move_body(delta: float):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= (gravity / 2) * delta
+		velocity.y -= (gravity / 4) * delta
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

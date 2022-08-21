@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/welcome-to-the-moon.mp3" type="AudioStream" id=1]
 [ext_resource path="res://components/Node.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/voicelines/mate_voice_lines_clockwise_hint_2.mp3" type="AudioStream" id=15]
 [ext_resource path="res://assets/voicelines/mate_voice_lines_satellite_hint_1.mp3" type="AudioStream" id=16]
 [ext_resource path="res://assets/voicelines/mate_voice_lines_mountain_hint_1.mp3" type="AudioStream" id=17]
+[ext_resource path="res://assets/Robtronika-Regular.ttf" type="DynamicFontData" id=18]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
@@ -331,6 +332,9 @@ extents = Vector3( 15.2815, 89.8816, 180.152 )
 [sub_resource type="BoxShape" id=28]
 extents = Vector3( 185.184, 150.744, 11.8769 )
 
+[sub_resource type="DynamicFont" id=33]
+font_data = ExtResource( 18 )
+
 [node name="Game" type="Spatial"]
 script = ExtResource( 3 )
 
@@ -492,5 +496,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 204.556, 0, 276.712 )
 [node name="CollisionShape" type="CollisionShape" parent="GameEndArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.705, 0, 0 )
 shape = SubResource( 28 )
+
+[node name="MapInstructionLabel" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 543.6, 17.2001, 92.16 )
+pixel_size = 0.1
+billboard = 2
+alpha_cut = 1
+text = "HOLD M"
+font = SubResource( 33 )
 
 [editable path="Player"]

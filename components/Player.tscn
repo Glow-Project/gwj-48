@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/AstronautHelmet.glb" type="PackedScene" id=1]
 [ext_resource path="res://components/Player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://components/Equipment/Oxygen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/alarm1.1.mp3" type="AudioStream" id=7]
 [ext_resource path="res://components/Menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/red_arrow.bmp" type="Texture" id=9]
 
 [sub_resource type="OpenSimplexNoise" id=5]
 
@@ -183,5 +184,9 @@ visible = false
 
 [node name="RadioPlayback" type="AudioStreamPlayer" parent="."]
 bus = "Mate"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 175, 0 )
+texture = ExtResource( 9 )
 
 [connection signal="finished" from="RadioPlayback" to="." method="_on_RadioPlayback_finished"]
