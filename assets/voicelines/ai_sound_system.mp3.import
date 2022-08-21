@@ -11,5 +11,5 @@ dest_files=[ "res://.import/ai_sound_system.mp3-3c2613ebd8e88e8174a60102605dda08
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

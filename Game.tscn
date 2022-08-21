@@ -338,18 +338,19 @@ visible = false
 mesh = SubResource( 3 )
 
 [node name="Bubble" parent="." instance=ExtResource( 4 )]
-transform = Transform( 7, 0, -6.11959e-07, 0, -7, 0, 6.11959e-07, 0, 7, 219.764, 0.00125027, 218.718 )
+transform = Transform( 50, 0, -7.54979e-06, 0, -50, 0, 7.54979e-06, 0, 50, 219.764, 0.00125027, 218.718 )
 
-[node name="Flag" type="Spatial" parent="Bubble"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09343, 0 )
+[node name="Flag" type="Spatial" parent="."]
+transform = Transform( 20, 0, -3.01992e-06, 0, -20, 0, 3.01992e-06, 0, 20, 232.109, 28.6223, 254.478 )
 
-[node name="Stick" type="MeshInstance" parent="Bubble/Flag"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308041, -0.24677, 0 )
+[node name="Stick" type="MeshInstance" parent="Flag"]
+transform = Transform( 0.904299, 0, -0.4269, 0, 1.83856, 0, 0.4269, 0, 0.904299, 0.962351, 0.148529, 1.11537 )
 mesh = SubResource( 25 )
 
-[node name="Flag" type="MeshInstance" parent="Bubble/Flag"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.548584, -0.491088, 0 )
+[node name="Flag" type="MeshInstance" parent="Flag/Stick"]
+transform = Transform( 1, 0, -1.42109e-14, 0, 0.543905, 0, 1.42109e-14, 0, 1, 0.240542, -0.353708, 0 )
 mesh = SubResource( 27 )
+skeleton = NodePath("../..")
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 600, 400 )
